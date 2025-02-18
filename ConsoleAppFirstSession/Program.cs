@@ -17,10 +17,13 @@ services.AddDbContext<FirstSessionContext>(options =>
 
 var serviceProvider = services.BuildServiceProvider(); 
 
-var _appDbContext = serviceProvider.GetService<FirstSessionContext>();
-foreach (var user in _appDbContext.Users.ToList())
+var appDbContext = serviceProvider.GetService<FirstSessionContext>();
+if (appDbContext != null)
 {
-    Console.WriteLine(user.UserName);
-    Console.WriteLine(user.Email);
-    Console.WriteLine(user.Password);
+    foreach (var user in appDbContext.Users.ToList())
+    {
+        Console.WriteLine(user.UserName);
+        Console.WriteLine(user.Email);
+        Console.WriteLine(user.Password);
+    }    
 }
