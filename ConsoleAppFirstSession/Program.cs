@@ -22,8 +22,6 @@ if (appDbContext != null)
 {
     foreach (var user in appDbContext.Users.ToList())
     {
-        Console.WriteLine(user.UserName);
-        Console.WriteLine(user.Email);
-        Console.WriteLine(user.Password);
+        Console.WriteLine(user);
     }    
 }
