@@ -24,6 +24,10 @@ public class User
     [StringLength(50)]
     public string UserName { get; set; } = null!;
     
+    public DateTime? CreatedDate { get; set; }
+    
+    public DateTime? ModifiedDate { get; set; }
+    
     public override string ToString()
     {
         var sb = new StringBuilder();

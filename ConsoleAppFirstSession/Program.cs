@@ -1,6 +1,8 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using ConsoleAppFirstSession.DbContext;
+using ConsoleAppFirstSession.Models;
+using ConsoleAppFirstSession.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,15 +15,44 @@ IConfiguration config = builder.Build();
 
 var services = new ServiceCollection();
 services.AddDbContext<FirstSessionContext>(options => 
-                                    options.UseSqlServer(config.GetConnectionString("DefaultConnection")));            
+                                    options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
+
+services.AddScoped<IUserService, UserServiceImpl>();
 
 var serviceProvider = services.BuildServiceProvider(); 
 
-var appDbContext = serviceProvider.GetService<FirstSessionContext>();
-if (appDbContext != null)
+var userService = serviceProvider.GetService<IUserService>();
+
+/*
+var newUser = new User
 {
-    foreach (var user in appDbContext.Users.ToList())
+    Email = "prueba@gmail.com",
+    UserName = "prueba",
+    FirstName = "Prueba",
+    LastName = "Prueba",
+    Password = "pruebaPassword",
+    Id = 2
+};
+
+try
+{
+    if (newUser.Id == 0)
     {
-        Console.WriteLine(user);
-    }    
+        userService!.Save(newUser);    
+    }
+    else
+    {
+        //userService!.Update(newUser);
+        userService!.Delete(2);
+    }
+    
+}
+catch (Exception e)
+{
+    Console.WriteLine(e);
+}
+*/
+foreach (var user in userService?.GetUsers())
+{
+    Console.WriteLine(user);
 }
