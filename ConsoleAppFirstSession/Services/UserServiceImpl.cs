@@ -1,5 +1,6 @@
 ﻿using ConsoleAppFirstSession.DbContext;
 using ConsoleAppFirstSession.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ConsoleAppFirstSession.Services;
 
@@ -50,7 +51,7 @@ public class UserServiceImpl : IUserService
 
     public List<User> GetUsers()
     {
-        return _userContext.Users.ToList();
+        return _userContext.Users.Include("Role").ToList();
     }
 
     public List<User> GetUsersByEmail(string email)

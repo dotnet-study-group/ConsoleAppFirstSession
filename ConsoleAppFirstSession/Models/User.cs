@@ -28,6 +28,10 @@ public class User
     
     public DateTime? ModifiedDate { get; set; }
     
+    public int RoleId { get; set; }
+    
+    public Role Role { get; set; } = null!;
+    
     public override string ToString()
     {
         var sb = new StringBuilder();
@@ -35,6 +39,7 @@ public class User
         sb.AppendFormat("Nombre {0}", FirstName).AppendLine();
         sb.AppendFormat("Usuario {0}", UserName).AppendLine();
         sb.AppendFormat("Password {0}", Password).AppendLine();
+        sb.AppendFormat("Role {0}", Role?.Name).AppendLine();
         
         return sb.ToString();
     }

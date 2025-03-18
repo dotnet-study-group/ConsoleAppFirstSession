@@ -18,12 +18,21 @@ services.AddDbContext<FirstSessionContext>(options =>
                                     options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
 
 services.AddScoped<IUserService, UserServiceImpl>();
+services.AddScoped<IRoleService, RoleServiceImpl>();
 
-var serviceProvider = services.BuildServiceProvider(); 
 
+var serviceProvider = services.BuildServiceProvider();
+
+var roleService = serviceProvider.GetService<IRoleService>();
 var userService = serviceProvider.GetService<IUserService>();
 
 /*
+var newRole = new Role
+{
+    Name = "Admin",
+};
+roleService.Save(newRole);
+
 var newUser = new User
 {
     Email = "prueba@gmail.com",
@@ -31,7 +40,7 @@ var newUser = new User
     FirstName = "Prueba",
     LastName = "Prueba",
     Password = "pruebaPassword",
-    Id = 2
+    RoleId = newRole.Id
 };
 
 try
@@ -43,7 +52,7 @@ try
     else
     {
         //userService!.Update(newUser);
-        userService!.Delete(2);
+        //userService!.Delete(2);
     }
     
 }
@@ -52,6 +61,7 @@ catch (Exception e)
     Console.WriteLine(e);
 }
 */
+
 foreach (var user in userService?.GetUsers())
 {
     Console.WriteLine(user);
