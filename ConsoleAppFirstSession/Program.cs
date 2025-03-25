@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using ConsoleAppFirstSession.DbContext;
+using ConsoleAppFirstSession.Inputs;
 using ConsoleAppFirstSession.Models;
 using ConsoleAppFirstSession.Services;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +20,7 @@ services.AddDbContext<FirstSessionContext>(options =>
 
 services.AddScoped<IUserService, UserServiceImpl>();
 services.AddScoped<IRoleService, RoleServiceImpl>();
-
+services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var serviceProvider = services.BuildServiceProvider();
 
@@ -29,18 +30,20 @@ var userService = serviceProvider.GetService<IUserService>();
 /*
 var newRole = new Role
 {
-    Name = "Admin",
+    Name = "Privado",
 };
 roleService.Save(newRole);
+*/
 
-var newUser = new User
+var newUser = new UserInput
 {
-    Email = "prueba@gmail.com",
-    UserName = "prueba",
-    FirstName = "Prueba",
-    LastName = "Prueba",
-    Password = "pruebaPassword",
-    RoleId = newRole.Id
+    Email = "input@gmail.com",
+    UserName = "input",
+    FirstName = "input",
+    LastName = "input",
+    Password = "inputPassword",
+    RoleId = 6,
+    Id = 3
 };
 
 try
@@ -51,7 +54,7 @@ try
     }
     else
     {
-        //userService!.Update(newUser);
+        userService!.Update(newUser);
         //userService!.Delete(2);
     }
     
@@ -60,7 +63,7 @@ catch (Exception e)
 {
     Console.WriteLine(e);
 }
-*/
+
 
 foreach (var user in userService?.GetUsers())
 {
