@@ -1,10 +1,9 @@
-﻿using ConsoleAppFirstSession.Inputs;
-using ConsoleAppFirstSession.Models;
-
+﻿
 namespace ConsoleAppFirstSession.Binders;
 
 public static class UserBinder
 {
+    /*
     public static void Bind(this UserInput userInput, User user)
     {
         user.ModifiedDate = DateTime.Now;
@@ -14,4 +13,5 @@ public static class UserBinder
         user.Password = userInput.Password;
         user.RoleId = userInput.RoleId;
     }
+    */
 }

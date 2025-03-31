@@ -1,5 +1,4 @@
 ﻿using ConsoleAppFirstSession.DbContext;
-using ConsoleAppFirstSession.Models;
 
 namespace ConsoleAppFirstSession.Services;
 
@@ -12,6 +11,7 @@ public class RoleServiceImpl : IRoleService
         _roleContext = roleContext;
     }
     
+    /*
     void IRoleService.Save(Role role)
     {
         try
@@ -39,4 +39,5 @@ public class RoleServiceImpl : IRoleService
     {
         throw new NotImplementedException();
     }
+    */
 }

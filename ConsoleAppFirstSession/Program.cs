@@ -2,7 +2,6 @@
 
 using ConsoleAppFirstSession.DbContext;
 using ConsoleAppFirstSession.Inputs;
-using ConsoleAppFirstSession.Models;
 using ConsoleAppFirstSession.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -45,7 +44,7 @@ var newUser = new UserInput
     RoleId = 6,
     Id = 3
 };
-
+/*
 try
 {
     if (newUser.Id == 0)
@@ -69,3 +68,4 @@ foreach (var user in userService?.GetUsers())
 {
     Console.WriteLine(user);
 }
+*/

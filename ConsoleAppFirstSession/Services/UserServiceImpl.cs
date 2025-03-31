@@ -1,10 +1,6 @@
 ﻿using AutoMapper;
 using ConsoleAppFirstSession.DbContext;
-using ConsoleAppFirstSession.Inputs;
-using ConsoleAppFirstSession.Models;
 using ConsoleAppFirstSession.Profiles;
-using Microsoft.EntityFrameworkCore;
-using ConsoleAppFirstSession.Binders;
 
 namespace ConsoleAppFirstSession.Services;
 
@@ -22,6 +18,8 @@ public class UserServiceImpl : IUserService
             cfg.AddProfile<UserProfile>();
         });
     }
+    
+    /*
     public void Save(UserInput userInput)
     {
         try
@@ -88,4 +86,5 @@ public class UserServiceImpl : IUserService
             throw;
         }
     }
+    */
 }
