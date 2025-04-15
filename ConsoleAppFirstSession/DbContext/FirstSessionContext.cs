@@ -1,4 +1,6 @@
 ﻿
+using ConsoleAppFirstSession.Models;
+
 namespace ConsoleAppFirstSession.DbContext;
 
 using Microsoft.EntityFrameworkCore;
@@ -14,12 +16,18 @@ public class FirstSessionContext : DbContext
     {
         
     }
-
-    /*
+    
+    
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         base.OnConfiguring(optionsBuilder);
         optionsBuilder.UseSqlServer("Data Source=(localdb)\\mssqllocaldb;Initial Catalog=FirstSession;Integrated Security=True");
     }
-    */
+    
+    
+    public virtual DbSet<Alfa> Alfas { get; set; }
+
+    public virtual DbSet<User> Users { get; set; }
+    
+    
 }
